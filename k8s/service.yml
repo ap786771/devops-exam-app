@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: devopsexamapp-service
+  namespace: devopsexamapp
+spec:
+  type: LoadBalancer   # 🔥 This tells EKS to create an AWS ELB
+  selector:
+    app: devopsexamapp
+  ports:
+    - port: 80          # external port (browser access)
+      targetPort: 5000  # container port (Flask app)
